@@ -94,6 +94,9 @@ def extend_and_write_docs(
 
     logger.debug(f"Writing document index to {pq_index}...")
     doc_index = pd.DataFrame(doc_results).set_index("slug", drop=True)
+
+    # Avoid mixed dtypes, which can cause errors in pyarrow while exporting to parquet
+    doc_index["gross_amount"] = doc_index.gross_amount.astype(str)
     doc_index.to_parquet(pq_index)
 
 

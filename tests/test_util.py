@@ -25,6 +25,8 @@ def test_is_dollar_amount():
     assert is_dollar_amount("3")
     assert is_dollar_amount("04")
     assert is_dollar_amount("9,000")
+    assert is_dollar_amount("10.0")
+    assert is_dollar_amount("$50.0")
     assert not is_dollar_amount("")
     assert not is_dollar_amount("$")
     assert not is_dollar_amount(",")
@@ -43,6 +45,7 @@ def test_dollar_amount():
     assert dollar_amount("3") == 3
     assert dollar_amount("04") == 4
     assert dollar_amount("9,000") == 9000
+    assert dollar_amount("1,300.0") == 1300.0
     assert dollar_amount("") is None
     assert dollar_amount("C") is None
     assert dollar_amount("$x") is None

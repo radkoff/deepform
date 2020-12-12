@@ -36,7 +36,9 @@ def default_similarity(lhs, rhs):
 
 def is_dollar_amount(s):
     try:
-        return num_digits(s) > 0 and bool(re.match(r"^\$?\d*(,\d\d\d)*(\.\d\d)?$", s))
+        return num_digits(s) > 0 and bool(
+            re.match(r"^\$?\d*(,\d\d\d)*(\.[\d]{1,2})?$", s)
+        )
     except TypeError:
         return False
 
